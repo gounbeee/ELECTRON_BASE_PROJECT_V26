@@ -1,0 +1,23 @@
+{
+  "name": "BASE_PROJECT_VER26",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gounbeee",
+  "license": "ISC",
+  "dependencies": {
+    "@electron/remote": "^2.0.10",
+    "electron": "^26.0.0",
+    "electron-packager": "^17.1.2",
+    "eslint": "^8.47.0",
+    "marked": "^7.0.4",
+    "materialize-css": "^1.0.0"
+  },
+  "devDependencies": {
+    "devtron": "^1.4.0"
+  }
+}

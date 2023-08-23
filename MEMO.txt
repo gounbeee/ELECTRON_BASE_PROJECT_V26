@@ -1,0 +1,66 @@
+Gounbeee
+coaramause.com
+2023
+
+
+
+MEMO
+
+
+
+
+
+⚫︎ Sandbox 機能について
+https://www.electronjs.org/docs/latest/tutorial/sandbox
+
+Starting from Electron 20, the sandbox is enabled for renderer processes without any further configuration. If you want to disable the sandbox for a process, see the Disabling the sandbox for a single process section.
+
+
+
+
+
+⚫︎ contextIsolation: false, に関して
+https://stackoverflow.com/questions/55093700/electron-5-0-0-uncaught-referenceerror-require-is-not-defined
+https://www.electronjs.org/docs/latest/tutorial/context-isolation
+
+
+// index.htmlでrequireを使用する際、requireがない！と出た時必要な設定
+// だが、これはElectronアプリケーションのセキュリティを脅かすことだ。
+// これをFalseにせず、「Preload機能」を使用して必要な機能を揃えるべきだ。
+// contextIsolation: false,  
+
+
+
+
+
+
+⚫︎ nodeIntegration: true　が危ない件について
+https://stackoverflow.com/questions/44391448/electron-require-is-not-defined
+
+@PauloHenrique nodeIntegration: true is a security risk only when you're executing some untrusted remote code on your application. For example, suppose your application opens up a third party webpage. That would be a security risk because the third party webpage will have access to node runtime and can run some malicious code on your user's filesystem. In that case it makes sense to set nodeIntegration: false. If your app is not displaying any remote content, or is displaying only trusted content, then setting nodeIntegration: true is okay.
+
+
+
+
+
+
+
+⚫︎ preload 機能について
+https://www.electronjs.org/docs/latest/tutorial/tutorial-preload
+
+https://stackoverflow.com/questions/57807459/how-to-use-preload-js-properly-in-electron/59814127#59814127
+
+
+
+
+
+preload.jsファイルは、Electronを使用する上で、よりセキュリティを強化した形で使うことができるようにする。
+
+Electronでは、mainプロセスがElectron寄りの機能を遂行し、PC、MACなど使用者の環境に合わせた必要な処理を行う。
+また、rendererプロセスが、いわゆるWEB技術に関する機能を遂行し、画面の構成、装飾、動きなどを担当する。
+
+そう考えると、rendererプロセスをFrontend、Electron側のmainプロセスをBackendだと読むこともできる。その時、Frontendとなるrendererプロセスは、ユーザによる変更が容易で、Javascriptを駆使した任意の操作が可能なため、セキュリティ上の問題も発生する。そこで、mainプロセスでは、NodeJSで取り入れた機能すべてを使用できるが、rendererプロセスでは制限をかけていることが多い。結果、preload機能として機能を登録しActivateすることで、必要とされる機能を使用できるようになる。
+
+preload機能は、rendererプロセスの中で、Webページが読み込まれる「前」に活性化される。contenxtBridge APIを使用し、必要な機能を設定することで、rendererプロセスとやりとりができるようになる。
+
+
