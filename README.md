@@ -2,7 +2,7 @@
 #### by Gounbeee
 [coaramause.com](coaramause.com)
 
-![Image 2](WORK/CAPTURE_2.png)
+![Image 1](WORK/CAPTURE_1.png)
 
 ## This project is a demo project to demonstrate the functionalities of preload scripts, main process with ipcMain, renderer process with ipcRenderer and sandboxing.
 
