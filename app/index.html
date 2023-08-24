@@ -11,39 +11,18 @@
       connect-src *"
     />
     <title>BASE PROJECT Ver26</title>
-    <!-- Import materialize.css -->
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="../node_modules/materialize-css/dist/css/materialize.min.css"
-      media="screen,projection"
-    />
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
+
   <body>
 
-    <section class="controls row">
-      <div class="col s24">
-        <button id="ipcTestBt">IPCテストを開始</button>
-      </div>
-    </section>
 
+    <button id="ipcTestBt">IPCテストを開始</button>
 
-    <section class="row content">
-      <div class="col s24 card">
-        <div class="rendered-html" id="html"></div>
-      </div>
-    </section>
+    <div class="rendered-html" id="html"></div>
 
+    <script type="text/javascript" src="./renderer.js"></script>
 
-    <script type="text/javascript" src="./renderer.js" />
-
-
-    <!-- JavaScript at end of body for optimized loading -->
-    <script
-      type="text/javascript"
-      src="../node_modules/materialize-css/dist/js/materialize.min.js"
-    ></script>
 
 
   </body>

@@ -11,21 +11,6 @@ const marked = require('marked')
 
 
 
-// ----------------------------------------
-// remoteモジュールをrenderer プロセスで使用する
-// https://stackoverflow.com/questions/69233435/uncaught-error-electron-remote-is-disabled-for-this-webcontents 
-//
-// const remote = require("@electron/remote");
-// const wnd = remote.getCurrentWindow();
-// document.querySelector("h1").onclick = () => {
-//      wnd.close()
-// }
-
-const remote = require('@electron/remote/main')
-remote.initialize()
-
-
-
 
 
 let g_window;
@@ -69,7 +54,7 @@ const createWindow = () => {
         height: 600,
         webPreferences: {
 
-            //sandbox: true,
+            sandbox: true,
             nodeIntegration: false,
                  
             // // index.htmlでrequireを使用する際、requireがない！と出た時必要な設定
@@ -84,12 +69,6 @@ const createWindow = () => {
     });
 
 
-
-
-
-    // remoteモジュールの対策
-    // https://stackoverflow.com/questions/69233435/uncaught-error-electron-remote-is-disabled-for-this-webcontents
-    require('@electron/remote/main').enable(g_window.webContents)
 
     g_window.loadFile(__dirname + '/index.html');
 
